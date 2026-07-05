@@ -339,7 +339,15 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
       background: #dc2626;
       color: white;
     }
-    .btn:disabled {
+    .btn:disabled,
+    .btn-start:disabled,
+    .btn-pause:disabled,
+    .btn-stop:disabled,
+    .btn-edit:disabled,
+    .btn-danger:disabled {
+      background: rgba(255, 255, 255, 0.04) !important;
+      color: #9ca3af !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
       opacity: 0.3;
       cursor: not-allowed;
     }

@@ -27,13 +27,6 @@ import { takeUntil } from 'rxjs/operators';
           <div class="title-row">
             <h1>Agents Manager</h1>
             <div class="header-actions">
-              <button 
-                class="btn btn-warning-outline" 
-                (click)="onSimulateError()" 
-                title="Simulate connection failure on next load"
-              >
-                ⚠️ Sim Error
-              </button>
               <button class="btn btn-primary" (click)="onNewAgent()">
                 <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                 New Agent
@@ -121,11 +114,19 @@ import { takeUntil } from 'rxjs/operators';
 
       <div class="detail-panel">
         <app-agent-detail
-          *ngIf="currentView === 'detail'"
+          *ngIf="currentView === 'detail' && selectedAgent()"
           [agent]="selectedAgent()"
           (edit)="onEditAgent($event)"
           (deleted)="onAgentDeleted()"
         ></app-agent-detail>
+
+        <div class="empty-detail" *ngIf="currentView === 'detail' && !selectedAgent()">
+          <svg viewBox="0 0 24 24" width="64" height="64" class="empty-icon">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+          <h3>No Agent Selected</h3>
+          <p>Select an agent from the list to view configuration details, logs, and execution controls.</p>
+        </div>
 
         <app-agent-form
           *ngIf="currentView === 'form'"
@@ -269,7 +270,7 @@ import { takeUntil } from 'rxjs/operators';
       transition: color 0.2s;
     }
     .active-card .card-title-row h3 {
-      color: #a5b4fc;
+      color: #ffffff;
     }
     .state-indicator {
       width: 8px;
@@ -439,6 +440,35 @@ import { takeUntil } from 'rxjs/operators';
       font-size: 0.85rem;
       max-width: 280px;
       line-height: 1.4;
+    }
+    .empty-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 40px;
+      color: #9ca3af;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+    .empty-icon {
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+    .empty-detail h3 {
+      color: #f3f4f6;
+      font-size: 1.2rem;
+      margin: 0 0 8px 0;
+    }
+    .empty-detail p {
+      max-width: 320px;
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
   `]
 })
