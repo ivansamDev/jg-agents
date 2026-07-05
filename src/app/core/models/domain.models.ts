@@ -14,7 +14,7 @@ export interface Agent {
 export interface Task {
   id: string;
   title: string;
-  status: 'todo' | 'in_progress' | 'done';
+  status: 'todo' | 'in_progress' | 'blocked' | 'done';
   assignee?: string;
   createdAt: Date;
 }

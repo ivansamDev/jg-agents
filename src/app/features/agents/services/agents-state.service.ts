@@ -1,5 +1,8 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Agent, AgentState } from '../../../core/models/domain.models';
+import { AgentsApiService } from './agents-api.service';
 
 export interface AgentFilter {
   state?: AgentState;
@@ -8,15 +11,19 @@ export interface AgentFilter {
 
 @Injectable({ providedIn: 'root' })
 export class AgentsStateService {
+  private readonly apiService = inject(AgentsApiService);
+
   readonly #agents = signal<Agent[]>([]);
   readonly #loading = signal(false);
   readonly #error = signal<string | null>(null);
   readonly #filter = signal<AgentFilter>({});
+  readonly #selectedId = signal<string | null>(null);
 
   readonly agents = this.#agents.asReadonly();
   readonly loading = this.#loading.asReadonly();
   readonly error = this.#error.asReadonly();
   readonly filter = this.#filter.asReadonly();
+  readonly selectedId = this.#selectedId.asReadonly();
 
   readonly filteredAgents = computed(() => {
     const agents = this.#agents();
@@ -28,40 +35,94 @@ export class AgentsStateService {
     });
   });
 
-  load() {
+  readonly selectedAgent = computed(() => {
+    const id = this.#selectedId();
+    if (!id) return null;
+    return this.#agents().find(a => a.id === id) || null;
+  });
+
+  selectAgent(id: string | null) {
+    this.#selectedId.set(id);
+  }
+
+  load(): Observable<Agent[]> {
     this.#loading.set(true);
     this.#error.set(null);
-    // Simulación de carga
-    setTimeout(() => {
-      this.#agents.set([
-        { id: '1', name: 'Agent Alpha', description: 'First agent', state: 'idle', createdAt: new Date(), updatedAt: new Date() },
-        { id: '2', name: 'Agent Beta', description: 'Second agent', state: 'running', createdAt: new Date(), updatedAt: new Date() }
-      ]);
-      this.#loading.set(false);
-    }, 500);
-  }
-
-  create(agent: Omit<Agent, 'id' | 'createdAt' | 'updatedAt'>) {
-    const newAgent: Agent = {
-      ...agent,
-      id: Date.now().toString(),
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-    this.#agents.update(list => [...list, newAgent]);
-  }
-
-  update(id: string, changes: Partial<Omit<Agent, 'id' | 'createdAt'>>) {
-    this.#agents.update(list => 
-      list.map(item => item.id === id ? { ...item, ...changes, updatedAt: new Date() } : item)
+    return this.apiService.getAgents().pipe(
+      tap({
+        next: (list) => {
+          this.#agents.set(list);
+          this.#loading.set(false);
+        },
+        error: (err) => {
+          this.#error.set(err.message || 'An error occurred');
+          this.#loading.set(false);
+        }
+      })
     );
   }
 
-  remove(id: string) {
-    this.#agents.update(list => list.filter(item => item.id !== id));
+  create(agent: Omit<Agent, 'id' | 'createdAt' | 'updatedAt'>): Observable<Agent> {
+    this.#loading.set(true);
+    this.#error.set(null);
+    return this.apiService.createAgent(agent).pipe(
+      tap({
+        next: (newAgent) => {
+          this.#agents.update(list => [...list, newAgent]);
+          this.#loading.set(false);
+        },
+        error: (err) => {
+          this.#error.set(err.message || 'An error occurred during creation');
+          this.#loading.set(false);
+        }
+      })
+    );
+  }
+
+  update(id: string, changes: Partial<Omit<Agent, 'id' | 'createdAt'>>): Observable<Agent> {
+    this.#loading.set(true);
+    this.#error.set(null);
+    return this.apiService.updateAgent(id, changes).pipe(
+      tap({
+        next: (updatedAgent) => {
+          this.#agents.update(list => 
+            list.map(item => item.id === id ? updatedAgent : item)
+          );
+          this.#loading.set(false);
+        },
+        error: (err) => {
+          this.#error.set(err.message || 'An error occurred during update');
+          this.#loading.set(false);
+        }
+      })
+    );
+  }
+
+  remove(id: string): Observable<void> {
+    this.#loading.set(true);
+    this.#error.set(null);
+    return this.apiService.deleteAgent(id).pipe(
+      tap({
+        next: () => {
+          this.#agents.update(list => list.filter(item => item.id !== id));
+          if (this.#selectedId() === id) {
+            this.#selectedId.set(null);
+          }
+          this.#loading.set(false);
+        },
+        error: (err) => {
+          this.#error.set(err.message || 'An error occurred during deletion');
+          this.#loading.set(false);
+        }
+      })
+    );
   }
 
   setFilter(filter: AgentFilter) {
-    this.#filter.set(filter);
+    this.#filter.set({ ...this.#filter(), ...filter });
+  }
+
+  triggerApiFail(): void {
+    this.apiService.triggerNextCallToFail();
   }
 }
