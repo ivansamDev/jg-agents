@@ -95,33 +95,33 @@ import { NgIf, NgClass } from '@angular/common';
   `,
   styles: [`
     .agent-form-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--app-glass-bg);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--app-glass-border);
       border-radius: 12px;
       padding: 24px;
-      color: #f3f4f6;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      color: var(--app-text);
+      box-shadow: var(--app-shadow);
     }
     .form-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--app-border);
       padding-bottom: 12px;
     }
     .form-header h2 {
       margin: 0;
       font-size: 1.5rem;
       font-weight: 600;
-      color: #60a5fa;
+      color: var(--app-accent);
     }
     .btn-close {
       background: none;
       border: none;
-      color: #9ca3af;
+      color: var(--app-text-muted);
       font-size: 1.8rem;
       cursor: pointer;
       line-height: 1;
@@ -129,12 +129,12 @@ import { NgIf, NgClass } from '@angular/common';
       transition: color 0.2s;
     }
     .btn-close:hover {
-      color: #f3f4f6;
+      color: var(--app-text);
     }
     .form-error-banner {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--app-danger);
+      color: var(--app-danger);
       padding: 12px;
       border-radius: 8px;
       margin-bottom: 20px;
@@ -159,19 +159,19 @@ import { NgIf, NgClass } from '@angular/common';
     .form-group label {
       font-size: 0.85rem;
       font-weight: 500;
-      color: #9ca3af;
+      color: var(--app-text-muted);
     }
     .required {
-      color: #ef4444;
+      color: var(--app-danger);
     }
     .form-group input,
     .form-group textarea,
     .form-group select {
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--app-bg);
+      border: 1px solid var(--app-border);
       border-radius: 6px;
       padding: 10px 12px;
-      color: #f3f4f6;
+      color: var(--app-text);
       font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -179,17 +179,17 @@ import { NgIf, NgClass } from '@angular/common';
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+      border-color: var(--app-accent);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
     }
     .form-group input.is-invalid {
-      border-color: #f87171;
+      border-color: var(--app-danger);
     }
     .form-group input.is-invalid:focus {
-      box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.3);
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
     }
     .invalid-feedback {
-      color: #f87171;
+      color: var(--app-danger);
       font-size: 0.8rem;
     }
     .form-actions {
@@ -212,18 +212,18 @@ import { NgIf, NgClass } from '@angular/common';
       gap: 8px;
     }
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: #e5e7eb;
+      background: var(--app-border);
+      color: var(--app-text);
     }
     .btn-secondary:hover:not(:disabled) {
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--app-bg);
     }
     .btn-primary {
-      background: #2563eb;
-      color: #ffffff;
+      background: var(--app-accent);
+      color: var(--app-text);
     }
     .btn-primary:hover:not(:disabled) {
-      background: #1d4ed8;
+      opacity: 0.9;
     }
     .btn:disabled {
       opacity: 0.5;
@@ -233,7 +233,7 @@ import { NgIf, NgClass } from '@angular/common';
       width: 16px;
       height: 16px;
       border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top-color: #ffffff;
+      border-top-color: var(--app-text);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }

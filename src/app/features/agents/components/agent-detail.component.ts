@@ -112,14 +112,14 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
   `,
   styles: [`
     .agent-detail-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--app-glass-bg);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--app-glass-border);
       border-radius: 12px;
       padding: 24px;
-      color: #f3f4f6;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      color: var(--app-text);
+      box-shadow: var(--app-shadow);
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -129,7 +129,7 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--app-border);
       padding-bottom: 16px;
       margin-bottom: 20px;
     }
@@ -137,13 +137,13 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
       margin: 4px 0 0 0;
       font-size: 1.8rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--app-text);
     }
     .agent-id-badge {
       font-size: 0.75rem;
       font-family: monospace;
-      color: #9ca3af;
-      background: rgba(255, 255, 255, 0.08);
+      color: var(--app-text-muted);
+      background: var(--app-border);
       padding: 2px 6px;
       border-radius: 4px;
     }
@@ -159,28 +159,28 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
     }
     .state-idle {
       background: rgba(156, 163, 175, 0.15);
-      color: #d1d5db;
+      color: var(--app-text-muted);
       border: 1px solid rgba(156, 163, 175, 0.3);
     }
     .state-running {
       background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
+      color: var(--app-success);
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
     .state-paused {
       background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
+      color: var(--app-warn);
       border: 1px solid rgba(245, 158, 11, 0.3);
     }
     .state-error {
       background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
+      color: var(--app-danger);
       border: 1px solid rgba(239, 68, 68, 0.3);
     }
     .pulse-dot {
       width: 8px;
       height: 8px;
-      background-color: #10b981;
+      background-color: var(--app-success);
       border-radius: 50%;
       box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
       animation: pulse 1.5s infinite;
@@ -200,9 +200,9 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
       }
     }
     .action-error-banner {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--app-danger);
+      color: var(--app-danger);
       padding: 10px 14px;
       border-radius: 8px;
       margin-bottom: 20px;
@@ -214,7 +214,7 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
     .btn-clear-error {
       background: none;
       border: none;
-      color: #fca5a5;
+      color: var(--app-danger);
       font-size: 1.2rem;
       cursor: pointer;
       line-height: 1;
@@ -229,40 +229,40 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: #9ca3af;
+      color: var(--app-text-muted);
       margin: 0 0 8px 0;
     }
     .description-text {
       font-size: 1rem;
       line-height: 1.6;
-      color: #e5e7eb;
+      color: var(--app-text);
       margin: 0;
     }
     .meta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      background: rgba(0, 0, 0, 0.15);
+      background: var(--app-bg);
       padding: 16px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--app-border);
     }
     .meta-label {
       display: block;
       font-size: 0.75rem;
-      color: #9ca3af;
+      color: var(--app-text-muted);
       margin-bottom: 4px;
     }
     .meta-value {
       display: block;
       font-size: 0.9rem;
       font-weight: 500;
-      color: #f3f4f6;
+      color: var(--app-text);
     }
     .detail-actions {
       margin-top: 24px;
       padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid var(--app-border);
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -295,49 +295,49 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
       border: none;
     }
     .btn-start {
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--app-success);
+      border: 1px solid var(--app-success);
     }
     .btn-start:hover:not(:disabled) {
-      background: #10b981;
-      color: white;
+      background: var(--app-success);
+      color: var(--app-text);
     }
     .btn-pause {
-      background: rgba(245, 158, 11, 0.2);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--app-warn);
+      border: 1px solid var(--app-warn);
     }
     .btn-pause:hover:not(:disabled) {
-      background: #f59e0b;
-      color: white;
+      background: var(--app-warn);
+      color: var(--app-text);
     }
     .btn-stop {
-      background: rgba(239, 68, 68, 0.2);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--app-danger);
+      border: 1px solid var(--app-danger);
     }
     .btn-stop:hover:not(:disabled) {
-      background: #ef4444;
-      color: white;
+      background: var(--app-danger);
+      color: var(--app-text);
     }
     .btn-edit {
-      background: rgba(59, 130, 246, 0.2);
-      color: #60a5fa;
-      border: 1px solid rgba(59, 130, 246, 0.4);
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--app-accent);
+      border: 1px solid var(--app-accent);
     }
     .btn-edit:hover:not(:disabled) {
-      background: #3b82f6;
-      color: white;
+      background: var(--app-accent);
+      color: var(--app-text);
     }
     .btn-danger {
-      background: rgba(220, 38, 38, 0.2);
-      color: #f87171;
-      border: 1px solid rgba(220, 38, 38, 0.4);
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--app-danger);
+      border: 1px solid var(--app-danger);
     }
     .btn-danger:hover:not(:disabled) {
-      background: #dc2626;
-      color: white;
+      background: var(--app-danger);
+      color: var(--app-text);
     }
     .btn:disabled,
     .btn-start:disabled,
@@ -345,9 +345,9 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
     .btn-stop:disabled,
     .btn-edit:disabled,
     .btn-danger:disabled {
-      background: rgba(255, 255, 255, 0.04) !important;
-      color: #9ca3af !important;
-      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      background: var(--app-border) !important;
+      color: var(--app-text-muted) !important;
+      border: 1px solid var(--app-border) !important;
       opacity: 0.3;
       cursor: not-allowed;
     }
@@ -359,18 +359,18 @@ import { NgIf, NgClass, DatePipe, UpperCasePipe } from '@angular/common';
       height: 100%;
       text-align: center;
       padding: 40px;
-      color: #9ca3af;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px dashed rgba(255, 255, 255, 0.1);
+      color: var(--app-text-muted);
+      background: var(--app-glass-bg);
+      border: 1px dashed var(--app-border);
       border-radius: 12px;
       box-sizing: border-box;
     }
     .empty-icon {
-      color: #4b5563;
+      color: var(--app-text-muted);
       margin-bottom: 16px;
     }
     .empty-detail h3 {
-      color: #f3f4f6;
+      color: var(--app-text);
       font-size: 1.2rem;
       margin: 0 0 8px 0;
     }

@@ -153,19 +153,19 @@ import { takeUntil } from 'rxjs/operators';
       }
     }
     .master-panel {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--app-glass-bg);
+      border: 1px solid var(--app-border);
       border-radius: 12px;
       display: flex;
       flex-direction: column;
       height: 100%;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--app-shadow);
     }
     .panel-header {
       padding: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid var(--app-border);
+      background: var(--app-bg);
     }
     .title-row {
       display: flex;
@@ -177,7 +177,7 @@ import { takeUntil } from 'rxjs/operators';
       margin: 0;
       font-size: 1.6rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+      background: linear-gradient(135deg, var(--app-text) 0%, var(--app-accent) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -198,37 +198,37 @@ import { takeUntil } from 'rxjs/operators';
     .search-icon {
       position: absolute;
       left: 12px;
-      color: #6b7280;
+      color: var(--app-text-muted);
       pointer-events: none;
     }
     .search-box input {
       width: 100%;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--app-bg);
+      border: 1px solid var(--app-border);
       border-radius: 6px;
       padding: 10px 10px 10px 38px;
-      color: #f3f4f6;
+      color: var(--app-text);
       font-size: 0.9rem;
       outline: none;
       transition: all 0.2s;
     }
     .search-box input:focus {
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+      border-color: var(--app-accent);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
     }
     .state-select {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--app-bg);
+      border: 1px solid var(--app-border);
       border-radius: 6px;
       padding: 10px 12px;
-      color: #f3f4f6;
+      color: var(--app-text);
       font-size: 0.9rem;
       outline: none;
       cursor: pointer;
       min-width: 120px;
     }
     .state-select:focus {
-      border-color: #4f46e5;
+      border-color: var(--app-accent);
     }
     .list-container {
       flex: 1;
@@ -239,22 +239,22 @@ import { takeUntil } from 'rxjs/operators';
       gap: 12px;
     }
     .agent-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--app-surface);
+      border: 1px solid var(--app-border);
       border-radius: 8px;
       padding: 16px;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .agent-card:hover {
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--app-bg);
       transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--app-border);
     }
     .active-card {
-      background: rgba(79, 70, 229, 0.08) !important;
-      border-color: rgba(79, 70, 229, 0.4) !important;
-      box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.2);
+      background: rgba(99, 102, 241, 0.1) !important;
+      border-color: var(--app-accent) !important;
+      box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.2);
     }
     .card-title-row {
       display: flex;
@@ -266,26 +266,26 @@ import { takeUntil } from 'rxjs/operators';
       margin: 0;
       font-size: 1.05rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--app-text);
       transition: color 0.2s;
     }
     .active-card .card-title-row h3 {
-      color: #ffffff;
+      color: var(--app-text);
     }
     .state-indicator {
       width: 8px;
       height: 8px;
       border-radius: 50%;
     }
-    .state-idle { background: #9ca3af; }
-    .state-running { background: #10b981; }
-    .state-paused { background: #f59e0b; }
-    .state-error { background: #ef4444; }
+    .state-idle { background: var(--app-text-muted); }
+    .state-running { background: var(--app-success); }
+    .state-paused { background: var(--app-warn); }
+    .state-error { background: var(--app-danger); }
 
     .card-desc {
       margin: 0 0 12px 0;
       font-size: 0.85rem;
-      color: #9ca3af;
+      color: var(--app-text-muted);
       line-height: 1.4;
     }
     .card-footer {
@@ -299,12 +299,12 @@ import { takeUntil } from 'rxjs/operators';
       font-size: 0.7rem;
       letter-spacing: 0.03em;
     }
-    .color-idle { color: #9ca3af; }
-    .color-running { color: #34d399; }
-    .color-paused { color: #fbbf24; }
-    .color-error { color: #f87171; }
+    .color-idle { color: var(--app-text-muted); }
+    .color-running { color: var(--app-success); }
+    .color-paused { color: var(--app-warn); }
+    .color-error { color: var(--app-danger); }
     .time-text {
-      color: #6b7280;
+      color: var(--app-text-muted);
     }
 
     .detail-panel {
@@ -326,28 +326,29 @@ import { takeUntil } from 'rxjs/operators';
       border: none;
     }
     .btn-primary {
-      background: #4f46e5;
-      color: #ffffff;
+      background: var(--app-accent);
+      color: var(--app-text);
     }
     .btn-primary:hover {
-      background: #4338ca;
+      opacity: 0.9;
     }
     .btn-warning-outline {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px solid var(--app-warn);
+      color: var(--app-warn);
     }
     .btn-warning-outline:hover {
-      background: rgba(245, 158, 11, 0.2);
+      background: var(--app-warn);
+      color: var(--app-text);
     }
     .btn-retry {
-      background: #4f46e5;
-      color: white;
+      background: var(--app-accent);
+      color: var(--app-text);
       margin-top: 12px;
       padding: 10px 20px;
     }
     .btn-retry:hover {
-      background: #4338ca;
+      opacity: 0.9;
     }
 
     /* Loading state skeleton */
@@ -358,8 +359,8 @@ import { takeUntil } from 'rxjs/operators';
       gap: 12px;
     }
     .skeleton-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--app-surface);
+      border: 1px solid var(--app-border);
       border-radius: 8px;
       padding: 16px;
       position: relative;
@@ -370,7 +371,7 @@ import { takeUntil } from 'rxjs/operators';
       position: absolute;
       top: 0; right: 0; bottom: 0; left: 0;
       transform: translateX(-100%);
-      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
       animation: shimmer 1.5s infinite;
     }
     @keyframes shimmer {
@@ -383,19 +384,19 @@ import { takeUntil } from 'rxjs/operators';
     }
     .skeleton-title {
       height: 16px;
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--app-border);
       border-radius: 4px;
       width: 50%;
     }
     .skeleton-dot {
       height: 8px;
       width: 8px;
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--app-border);
       border-radius: 50%;
     }
     .skeleton-text {
       height: 12px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--app-border);
       border-radius: 4px;
       margin-bottom: 6px;
       width: 90%;
@@ -406,7 +407,7 @@ import { takeUntil } from 'rxjs/operators';
     }
     .skeleton-footer {
       height: 10px;
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--app-border);
       border-radius: 4px;
       width: 30%;
     }
@@ -420,19 +421,19 @@ import { takeUntil } from 'rxjs/operators';
       padding: 40px 20px;
       text-align: center;
       flex: 1;
-      color: #9ca3af;
+      color: var(--app-text-muted);
     }
     .error-large-icon {
-      color: #ef4444;
+      color: var(--app-danger);
       margin-bottom: 12px;
     }
     .empty-large-icon {
-      color: #4b5563;
+      color: var(--app-text-muted);
       margin-bottom: 12px;
     }
     .panel-error-state h3, .panel-empty-state h3 {
       margin: 0 0 6px 0;
-      color: #ffffff;
+      color: var(--app-text);
       font-size: 1.15rem;
     }
     .panel-error-state p, .panel-empty-state p {
@@ -449,18 +450,18 @@ import { takeUntil } from 'rxjs/operators';
       height: 100%;
       text-align: center;
       padding: 40px;
-      color: #9ca3af;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px dashed rgba(255, 255, 255, 0.1);
+      color: var(--app-text-muted);
+      background: var(--app-glass-bg);
+      border: 1px dashed var(--app-border);
       border-radius: 12px;
       box-sizing: border-box;
     }
     .empty-icon {
-      color: #4b5563;
+      color: var(--app-text-muted);
       margin-bottom: 16px;
     }
     .empty-detail h3 {
-      color: #f3f4f6;
+      color: var(--app-text);
       font-size: 1.2rem;
       margin: 0 0 8px 0;
     }

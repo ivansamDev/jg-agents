@@ -190,8 +190,8 @@ import { NgIf, NgFor, NgClass, DatePipe } from '@angular/common';
               <svg viewBox="0 0 500 130" class="svg-line-chart">
                 <defs>
                   <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.4"/>
-                    <stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/>
+                    <stop offset="0%" stop-color="var(--app-accent)" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="var(--app-accent)" stop-opacity="0"/>
                   </linearGradient>
                 </defs>
                 
@@ -202,7 +202,7 @@ import { NgIf, NgFor, NgClass, DatePipe } from '@angular/common';
                 
                 <!-- Area & Line Paths based on loaded samples -->
                 <path *ngIf="chartPoints().length > 0" [attr.d]="svgAreaPath()" fill="url(#chartGrad)" />
-                <path *ngIf="chartPoints().length > 0" [attr.d]="svgLinePath()" fill="none" stroke="#4f46e5" stroke-width="3" />
+                <path *ngIf="chartPoints().length > 0" [attr.d]="svgLinePath()" fill="none" stroke="var(--app-accent)" stroke-width="3" />
                 
                 <!-- Points -->
                 <circle 

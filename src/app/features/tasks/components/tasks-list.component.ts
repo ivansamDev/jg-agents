@@ -156,7 +156,7 @@ import { Task } from '../../../core/models/domain.models';
       margin: 0;
       font-size: 1.8rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+      background: linear-gradient(135deg, var(--app-text) 0%, var(--app-accent) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -164,14 +164,14 @@ import { Task } from '../../../core/models/domain.models';
     .subtitle {
       margin: 4px 0 0 0;
       font-size: 0.9rem;
-      color: #9ca3af;
+      color: var(--app-text-muted);
     }
 
     /* Loading Progress Bar */
     .loading-bar-container {
       width: 100%;
       height: 3px;
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--app-border);
       position: relative;
       overflow: hidden;
       border-radius: 2px;
@@ -181,7 +181,7 @@ import { Task } from '../../../core/models/domain.models';
 
     .loading-bar {
       height: 100%;
-      background: linear-gradient(90deg, #4f46e5, #10b981, #ef4444, #6366f1);
+      background: linear-gradient(90deg, var(--app-accent), var(--app-success), var(--app-danger), var(--app-accent));
       width: 30%;
       position: absolute;
       animation: loading-slide 1.5s infinite linear;
@@ -195,11 +195,11 @@ import { Task } from '../../../core/models/domain.models';
 
     /* Glassmorphism task form */
     .form-panel {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--app-glass-bg);
+      border: 1px solid var(--app-border);
       border-radius: 12px;
       padding: 18px 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--app-shadow);
       animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -212,7 +212,7 @@ import { Task } from '../../../core/models/domain.models';
       margin: 0 0 14px 0;
       font-size: 1rem;
       font-weight: 600;
-      color: #a5b4fc;
+      color: var(--app-accent);
     }
 
     .form-grid {
@@ -237,7 +237,7 @@ import { Task } from '../../../core/models/domain.models';
     .form-label {
       font-size: 0.75rem;
       font-weight: 600;
-      color: #9ca3af;
+      color: var(--app-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -247,11 +247,11 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     .form-input, .form-select {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--app-bg);
+      border: 1px solid var(--app-border);
       border-radius: 6px;
       padding: 9px 12px;
-      color: #f3f4f6;
+      color: var(--app-text);
       font-size: 0.9rem;
       outline: none;
       transition: all 0.2s;
@@ -261,8 +261,8 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     .form-input:focus, .form-select:focus {
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+      border-color: var(--app-accent);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
     }
 
     .action-buttons-group {
@@ -297,8 +297,8 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     .kanban-column {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--app-glass-bg);
+      border: 1px solid var(--app-border);
       border-radius: 12px;
       display: flex;
       flex-direction: column;
@@ -308,18 +308,18 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     /* Column Headers & Border Highlights */
-    .column-todo { border-top: 4px solid #9ca3af; }
-    .column-in_progress { border-top: 4px solid #10b981; }
-    .column-blocked { border-top: 4px solid #ef4444; }
-    .column-done { border-top: 4px solid #6366f1; }
+    .column-todo { border-top: 4px solid var(--app-text-muted); }
+    .column-in_progress { border-top: 4px solid var(--app-success); }
+    .column-blocked { border-top: 4px solid var(--app-danger); }
+    .column-done { border-top: 4px solid var(--app-accent); }
 
     .column-header {
       padding: 14px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid var(--app-border);
+      background: var(--app-bg);
     }
 
     .column-header-title {
@@ -333,25 +333,25 @@ import { Task } from '../../../core/models/domain.models';
       height: 8px;
       border-radius: 50%;
     }
-    .dot-todo { background: #9ca3af; }
-    .dot-in-progress { background: #10b981; }
-    .dot-blocked { background: #ef4444; }
-    .dot-done { background: #6366f1; }
+    .dot-todo { background: var(--app-text-muted); }
+    .dot-in-progress { background: var(--app-success); }
+    .dot-blocked { background: var(--app-danger); }
+    .dot-done { background: var(--app-accent); }
 
     .column-title {
       font-size: 1rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--app-text);
     }
 
     .task-count {
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--app-border);
       padding: 2px 8px;
       border-radius: 20px;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #d1d5db;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--app-text-muted);
+      border: 1px solid var(--app-border);
     }
 
     .column-body {
@@ -367,19 +367,19 @@ import { Task } from '../../../core/models/domain.models';
 
     /* Drag-over states with status-colored glow */
     .kanban-column.drag-over {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--app-bg);
       border-style: dashed;
       border-width: 1.5px;
     }
-    .column-todo.drag-over { border-color: rgba(156, 163, 175, 0.6); box-shadow: 0 0 10px rgba(156, 163, 175, 0.15); }
-    .column-in_progress.drag-over { border-color: rgba(16, 185, 129, 0.6); box-shadow: 0 0 10px rgba(16, 185, 129, 0.15); }
-    .column-blocked.drag-over { border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 10px rgba(239, 68, 68, 0.15); }
-    .column-done.drag-over { border-color: rgba(99, 102, 241, 0.6); box-shadow: 0 0 10px rgba(99, 102, 241, 0.15); }
+    .column-todo.drag-over { border-color: var(--app-text-muted); }
+    .column-in_progress.drag-over { border-color: var(--app-success); }
+    .column-blocked.drag-over { border-color: var(--app-danger); }
+    .column-done.drag-over { border-color: var(--app-accent); }
 
     /* Task Card */
     .task-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--app-surface);
+      border: 1px solid var(--app-border);
       border-radius: 8px;
       padding: 14px;
       cursor: grab;
@@ -390,10 +390,10 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     .task-card:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: var(--app-bg);
       transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-color: var(--app-border);
+      box-shadow: var(--app-shadow);
     }
 
     .task-card:active {
@@ -407,16 +407,16 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     /* Left accents */
-    .todo-card { border-left: 3.5px solid #9ca3af; }
-    .in_progress-card { border-left: 3.5px solid #10b981; }
-    .blocked-card { border-left: 3.5px solid #ef4444; }
-    .done-card { border-left: 3.5px solid #6366f1; }
+    .todo-card { border-left: 3.5px solid var(--app-text-muted); }
+    .in_progress-card { border-left: 3.5px solid var(--app-success); }
+    .blocked-card { border-left: 3.5px solid var(--app-danger); }
+    .done-card { border-left: 3.5px solid var(--app-accent); }
 
     .task-title {
       margin: 0;
       font-size: 0.95rem;
       font-weight: 500;
-      color: #f3f4f6;
+      color: var(--app-text);
       line-height: 1.45;
       word-break: break-word;
     }
@@ -429,30 +429,30 @@ import { Task } from '../../../core/models/domain.models';
 
     .task-assignee {
       font-size: 0.75rem;
-      color: #a5b4fc;
-      background: rgba(165, 180, 252, 0.08);
+      color: var(--app-accent);
+      background: var(--app-border);
       padding: 3px 8px;
       border-radius: 4px;
       font-weight: 500;
-      border: 1px solid rgba(165, 180, 252, 0.05);
+      border: 1px solid var(--app-border);
     }
 
     .task-assignee.unassigned {
-      color: #9ca3af;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.02);
+      color: var(--app-text-muted);
+      background: var(--app-bg);
+      border: 1px solid var(--app-border);
     }
 
     .task-date {
       font-size: 0.7rem;
-      color: #6b7280;
+      color: var(--app-text-muted);
     }
 
     .card-actions {
       display: flex;
       justify-content: flex-end;
       gap: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-top: 1px solid var(--app-border);
       padding-top: 8px;
       margin-top: 2px;
     }
@@ -460,7 +460,7 @@ import { Task } from '../../../core/models/domain.models';
     .btn-edit, .btn-delete {
       background: transparent;
       border: none;
-      color: #9ca3af;
+      color: var(--app-text-muted);
       cursor: pointer;
       padding: 4px;
       border-radius: 4px;
@@ -471,13 +471,13 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     .btn-edit:hover {
-      background: rgba(79, 70, 229, 0.15);
-      color: #a5b4fc;
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--app-accent);
     }
 
     .btn-delete:hover {
       background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
+      color: var(--app-danger);
     }
 
     .btn-edit:disabled, .btn-delete:disabled {
@@ -490,9 +490,9 @@ import { Task } from '../../../core/models/domain.models';
       align-items: center;
       justify-content: center;
       height: 80px;
-      color: #4b5563;
+      color: var(--app-text-muted);
       font-size: 0.8rem;
-      border: 1px dashed rgba(255, 255, 255, 0.03);
+      border: 1px dashed var(--app-border);
       border-radius: 8px;
       user-select: none;
     }
@@ -520,19 +520,19 @@ import { Task } from '../../../core/models/domain.models';
     }
 
     .btn-primary {
-      background: #4f46e5;
-      color: #ffffff;
+      background: var(--app-accent);
+      color: var(--app-text);
     }
     .btn-primary:hover:not(:disabled) {
-      background: #4338ca;
+      opacity: 0.9;
     }
 
     .btn-success {
-      background: #10b981;
-      color: #ffffff;
+      background: var(--app-success);
+      color: var(--app-text);
     }
     .btn-success:hover:not(:disabled) {
-      background: #059669;
+      opacity: 0.9;
     }
   `]
 })
